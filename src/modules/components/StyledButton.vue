@@ -39,7 +39,7 @@ const buttonClass = computed(() => {
   return [
     'py-3.5 px-10 text-base leading-5 font-medium rounded-full',
     {
-      'bg-[#54BE96] text-white': props.buttonStyle === 'filled',
+      'bg-main text-white': props.buttonStyle === 'filled',
       'border border-[#C7CBCA] text-black bg-transparent py-[13px]': props.buttonStyle === 'outlined',
       'opacity-50 cursor-not-allowed': props.loading
     }

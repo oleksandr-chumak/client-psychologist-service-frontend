@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      main: "#54BE96"
+    },
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
