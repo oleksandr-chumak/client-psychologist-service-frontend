@@ -1,6 +1,6 @@
 <template>
-  <div class="p-4 border-b">
-    <div class="flex justify-between w-full max-w-6xl mx-auto">
+  <div class="py-4 border-b">
+    <div class="flex justify-between w-full max-w-6xl mx-auto px-4">
       <div class="flex items-center gap-4">
         <span class="font-bold text-xl mr-20"><span class="text-main">psychologists.</span>services</span>
         <navigation-link to="/">Home</navigation-link>
