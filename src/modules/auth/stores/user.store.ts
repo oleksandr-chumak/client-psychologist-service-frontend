@@ -24,6 +24,9 @@ export const useUserStore = defineStore('user', () => {
     try {
       await retrieveUser();
     } catch (error) {
+      if (TokenService.getToken()) {
+        TokenService.deleteToken();
+      }
       console.error(error);
     } finally {
       isUseRetrieved.value = true;
