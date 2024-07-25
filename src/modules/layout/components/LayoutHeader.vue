@@ -7,26 +7,51 @@
         <navigation-link to="/">Psychologist</navigation-link>
       </div>
       <div class="flex gap-4">
-        <styled-button button-style="outlined">Log In</styled-button>
-        <styled-button>Register</styled-button>
+        <styled-button
+          button-style="outlined"
+          @click="openLoginModal"
+        >Log In
+        </styled-button>
+        <styled-button @click="openRegistrationModal">Register</styled-button>
       </div>
     </div>
   </div>
+  <login-modal
+    :open="isLoginModalOpen"
+    @close="closeLoginModal"
+  ></login-modal>
+  <registration-modal
+    :open="isRegistrationModalOpen"
+    @close="closeRegistrationModal"
+  ></registration-modal>
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, ref } from 'vue';
 import StyledButton from '@/modules/components/StyledButton.vue';
 import NavigationLink from '@/modules/components/NavigationLink.vue';
+import LoginModal from '@/modules/auth/components/modals/LoginModal.vue';
+import RegistrationModal from '@/modules/auth/components/modals/RegistrationModal.vue';
+
 
 export default defineComponent({
-  components: { NavigationLink, StyledButton },
+  components: { RegistrationModal, LoginModal, NavigationLink, StyledButton },
   setup() {
-    const test = () => {
-      console.log('Button clicked');
-    };
+    const isLoginModalOpen = ref(false);
+    const isRegistrationModalOpen = ref(false);
+
+    const openLoginModal = () => isLoginModalOpen.value = true;
+    const closeLoginModal = () => isLoginModalOpen.value = false;
+    const openRegistrationModal = () => isRegistrationModalOpen.value = true;
+    const closeRegistrationModal = () => isRegistrationModalOpen.value = false;
+
     return {
-      test
+      isLoginModalOpen,
+      isRegistrationModalOpen,
+      openLoginModal,
+      closeLoginModal,
+      openRegistrationModal,
+      closeRegistrationModal
     };
   }
 });
