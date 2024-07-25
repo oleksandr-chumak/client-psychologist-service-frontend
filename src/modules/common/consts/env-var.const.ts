@@ -7,5 +7,5 @@ const getEnvVar = (envVarName: string): string => {
 };
 
 export const ENV_VARIABLE = {
-  WEB_API_URL: getEnvVar('WEB_API_URL')
+  WEB_API_URL: getEnvVar('VITE_WEB_API_URL')
 };
