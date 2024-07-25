@@ -23,6 +23,6 @@ const handleClose = () => emit('close');
       Thank you for your interest in our platform! In order to register, we need some information.
       Please provide us with the following information.
     </p>
-    <registration-form></registration-form>
+    <registration-form @on-success-submit="emit('close')"></registration-form>
   </teleport-modal>
 </template>

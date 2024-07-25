@@ -5,6 +5,9 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { useForm } from 'vee-validate';
 import PasswordFormInput from '@/modules/common/components/inputs/PasswordFormInput.vue';
 import StyledButton from '@/modules/common/components/StyledButton.vue';
+import AuthService from '@/modules/auth/services/auth.service';
+import { useToast } from 'vue-toastification';
+import { AxiosError } from 'axios';
 
 const schema = z.object({
   firstName: z.string().min(3, 'Must be at least 3 characters'),
@@ -15,13 +18,25 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>
 const validationSchema = toTypedSchema(schema);
 
+const toast = useToast();
 const { handleSubmit } = useForm<Schema>({
   validationSchema
 });
 
-const onSubmit = handleSubmit(values => {
-  // pretty print the values object
-  alert(JSON.stringify(values, null, 2));
+const emit = defineEmits(['onSuccessSubmit']);
+
+const onSubmit = handleSubmit(async (values) => {
+  try {
+    await AuthService.register(values);
+    toast.success('Registration success');
+    emit('onSuccessSubmit');
+  } catch (e) {
+    console.error(e);
+    const errorMessage = e instanceof AxiosError ? e.response?.data.message || e.message : 'An error occurred';
+    toast.error(errorMessage, {
+      timeout: 2000
+    });
+  }
 });
 
 </script>

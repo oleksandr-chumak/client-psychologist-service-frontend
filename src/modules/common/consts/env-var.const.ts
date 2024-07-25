@@ -1,9 +1,9 @@
 const getEnvVar = (envVarName: string): string => {
-  const envVar = import.meta.env.VUE_APP_VERSION;
+  const envVar = import.meta.env[envVarName];
   if (!envVar) {
     throw new Error(`${envVarName} not found`);
   }
-  return envVarName;
+  return envVar;
 };
 
 export const ENV_VARIABLE = {

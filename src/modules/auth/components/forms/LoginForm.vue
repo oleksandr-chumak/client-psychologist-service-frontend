@@ -5,6 +5,14 @@ import { toTypedSchema } from '@vee-validate/zod';
 import FormInput from '@/modules/common/components/inputs/FormInput.vue';
 import StyledButton from '@/modules/common/components/StyledButton.vue';
 import PasswordFormInput from '@/modules/common/components/inputs/PasswordFormInput.vue';
+import { AxiosError } from 'axios';
+import { useToast } from 'vue-toastification';
+import AuthService from '@/modules/auth/services/auth.service';
+import { TokenService } from '@/modules/common/services/token.service';
+import { useUserStore } from '@/modules/auth/stores/user.store';
+
+
+const emit = defineEmits(['onSuccessSubmit']);
 
 const schema = z.object({
   email: z.string().email('Email must be email').min(1, 'Email is required'),
@@ -12,14 +20,27 @@ const schema = z.object({
 });
 type Schema = z.infer<typeof schema>
 const validationSchema = toTypedSchema(schema);
+const userStore = useUserStore();
 
+const toast = useToast();
 const { handleSubmit } = useForm<Schema>({
   validationSchema
 });
 
-const onSubmit = handleSubmit(values => {
-  // pretty print the values object
-  alert(JSON.stringify(values, null, 2));
+const onSubmit = handleSubmit(async (values) => {
+  try {
+    const res = await AuthService.login(values);
+    TokenService.saveToken(res.accessToken);
+    await userStore.retrieveUser();
+    toast.success('Login success');
+    emit('onSuccessSubmit');
+  } catch (e) {
+    console.error(e);
+    const errorMessage = e instanceof AxiosError ? e.response?.data.message || e.message : 'An error occurred';
+    toast.error(errorMessage, {
+      timeout: 2000
+    });
+  }
 });
 
 </script>

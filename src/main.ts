@@ -6,7 +6,11 @@ import * as directives from 'vuetify/directives';
 import { fa } from "vuetify/iconsets/fa";
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import "@mdi/font/css/materialdesignicons.css";
-import "@fortawesome/fontawesome-free/css/all.css"; //
+import "@fortawesome/fontawesome-free/css/all.css";
+import { createPinia } from 'pinia';
+
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 import './index.css';
 
@@ -27,9 +31,14 @@ const vuetify = createVuetify({
   directives,
 });
 
+const pinia = createPinia();
+
 const app = createApp(App);
 
 app.use(router);
 app.use(vuetify);
+app.use(Toast, {});
+app.use(pinia);
+
 
 app.mount('#app');
