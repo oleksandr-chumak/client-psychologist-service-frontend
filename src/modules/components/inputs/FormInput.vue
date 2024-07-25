@@ -6,17 +6,28 @@ const props = withDefaults(defineProps<{
   error?: String
   placeholder?: string
   inputWrapperClass?: string
-  inputClass?: string
+  inputClass?: string,
+  type?: 'text' | 'password'
 }>(), {
-  inputClass: ''
+  inputClass: '',
+  inputWrapperClass: '',
+  type: 'text',
 });
 
 const inputClass = computed(() => [
-  'tw-border tw-border-solid tw-border-slate-200 tw-rounded-lg tw-p-[13px] tw-w-full tw-placeholder-[black] tw-placeholder:font-normal tw-placeholder:text-base tw-placeholder:leading-5',
   {
     [props.inputClass]: !!props.inputClass,
-    'tw-border-red-300': !!props.error
+    'tw-border-red-500 tw-placeholder-red-500': props.error,
+    'tw-border-zinc-200 tw-placeholder-black': !props.error
   },
+  'tw-border tw-border-solid tw-rounded-lg tw-p-[13px] tw-w-full tw-placeholder-[black] tw-placeholder:font-normal tw-placeholder:text-base tw-placeholder:leading-5'
+]);
+
+const inputWrapperClass = computed(() => [
+  "tw-w-full",
+  {
+    [props.inputWrapperClass]: !!props.inputWrapperClass,
+  }
 ]);
 
 const handleChange = (e) => {
@@ -30,9 +41,13 @@ const handleChange = (e) => {
     <input
       :class="inputClass"
       :placeholder="placeholder"
+      :type="type"
       @change="handleChange"
     />
-    <span v-if="!!error">{{ error }}</span>
+    <p
+      class="tw-text-red-500 tw-text-sm"
+      v-if="!!error"
+    >{{ error }}</p>
     <slot></slot>
   </div>
   <div></div>

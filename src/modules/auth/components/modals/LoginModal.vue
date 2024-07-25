@@ -29,6 +29,8 @@ export default defineComponent({
     @close="handleClose"
     :open="props.open"
   >
+    <h3 class="tw-text-[40px] tw-font-medium tw-leading-[48px] tw-mb-4">Log In</h3>
+    <p class="tw-text-base tw-leading-5 tw-text-[#191A15]/50 tw-font-normal tw-mb-4">Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.</p>
     <login-form></login-form>
   </teleport-modal>
 </template>
