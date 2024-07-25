@@ -1,36 +1,29 @@
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 
-export default defineComponent({
-  emits: ['close'],
-  props: {
-    open: {
-      type: Boolean,
-      default: false
-    },
-    modalOverlayClass: {
-      type: String,
-      default: ''
-    },
-    modalContentClass: {
-      type: String,
-      default: ''
-    }
-  },
-  setup(props, { emit }) {
-    const handleModalClose = () => emit('close');
-
-    const computedModalOverlayClass = computed(() => ['tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen tw-bg-[#00000066]', { [props.modalOverlayClass]: !!props.modalOverlayClass }]);
-    const computedModalContentClass = computed(() => ['tw-fixed tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-bg-[white] tw-p-16 tw-rounded-3xl tw-max-w-[566px] tw-w-3/6', { [props.modalContentClass]: !!props.modalContentClass }]);
-
-    return {
-      handleModalClose,
-      computedModalOverlayClass,
-      computedModalContentClass,
-      props
-    };
-  }
+const props = withDefaults(defineProps<{
+  open: boolean;
+  modalOverlayClass?: string;
+  modalContentClass?: string;
+}>(), {
+  open: false,
+  modalOverlayClass: '',
+  modalContentClass: ''
 });
+
+const emit = defineEmits(['close']);
+
+const handleModalClose = () => emit('close');
+
+const computedModalOverlayClass = computed(() => [
+  'tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen tw-bg-[#00000066]',
+  { [props.modalOverlayClass]: !!props.modalOverlayClass }
+]);
+
+const computedModalContentClass = computed(() => [
+  'tw-fixed tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-bg-[white] tw-p-16 tw-rounded-3xl tw-max-w-[566px] tw-w-3/6',
+  { [props.modalContentClass]: !!props.modalContentClass }
+]);
 </script>
 
 <template>

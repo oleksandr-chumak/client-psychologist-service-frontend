@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import StyledButton from '@/modules/common/components/StyledButton.vue';
+import NavigationLink from '@/modules/common/components/NavigationLink.vue';
+import LoginModal from '@/modules/auth/components/modals/LoginModal.vue';
+import RegistrationModal from '@/modules/auth/components/modals/RegistrationModal.vue';
+
+const isLoginModalOpen = ref(false);
+const isRegistrationModalOpen = ref(false);
+
+const openLoginModal = () => isLoginModalOpen.value = true;
+const closeLoginModal = () => isLoginModalOpen.value = false;
+const openRegistrationModal = () => isRegistrationModalOpen.value = true;
+const closeRegistrationModal = () => isRegistrationModalOpen.value = false;
+</script>
+
 <template>
   <div class="tw-py-4 tw-border-b">
     <div class="tw-flex tw-justify-between tw-w-full tw-max-w-6xl tw-mx-auto px-4">
@@ -10,7 +26,8 @@
         <styled-button
           button-style="outlined"
           @click="openLoginModal"
-        >Log In
+        >
+          Log In
         </styled-button>
         <styled-button @click="openRegistrationModal">Register</styled-button>
       </div>
@@ -25,35 +42,3 @@
     @close="closeRegistrationModal"
   ></registration-modal>
 </template>
-
-<script>
-import { defineComponent, ref } from 'vue';
-import StyledButton from '@/modules/common/components/StyledButton.vue';
-import NavigationLink from '@/modules/common/components/NavigationLink.vue';
-import LoginModal from '@/modules/auth/components/modals/LoginModal.vue';
-import RegistrationModal from '@/modules/auth/components/modals/RegistrationModal.vue';
-
-
-export default defineComponent({
-  components: { RegistrationModal, LoginModal, NavigationLink, StyledButton },
-  setup() {
-    const isLoginModalOpen = ref(false);
-    const isRegistrationModalOpen = ref(false);
-
-    const openLoginModal = () => isLoginModalOpen.value = true;
-    const closeLoginModal = () => isLoginModalOpen.value = false;
-    const openRegistrationModal = () => isRegistrationModalOpen.value = true;
-    const closeRegistrationModal = () => isRegistrationModalOpen.value = false;
-
-    return {
-      isLoginModalOpen,
-      isRegistrationModalOpen,
-      openLoginModal,
-      closeLoginModal,
-      openRegistrationModal,
-      closeRegistrationModal
-    };
-  }
-});
-
-</script>
