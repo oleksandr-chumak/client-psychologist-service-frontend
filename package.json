@@ -13,11 +13,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.13.2",
     "@vue/composition-api": "^1.7.2",
     "axios": "^1.7.2",
+    "vee-validate": "^4.13.2",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",
-    "vuetify": "^3.6.13"
+    "vuetify": "^3.6.13",
+    "zod": "^3.23.8"
   },
   "compilerOptions": {
     "types": [

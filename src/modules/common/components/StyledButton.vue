@@ -2,6 +2,7 @@
   <button
     :class="buttonClass"
     @click="handleClick"
+    :type="type"
     :disabled="props.disabled || props.loading"
   >
     <slot v-if="!props.loading"></slot>
@@ -21,12 +22,14 @@ const props = withDefaults(
     loading?: boolean,
     disabled?: boolean,
     buttonStyle?: 'outlined' | 'filled',
+    type?: 'button' | 'submit'
     class?: string
   }>(),
   {
     loading: false,
     disabled: false,
     buttonStyle: 'filled',
+    type: 'button',
     class: ''
   }
 );
