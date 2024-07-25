@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import FormInput from '@/modules/components/inputs/FormInput.vue';
-import StyledButton from '@/modules/components/StyledButton.vue';
-import PasswordFormInput from '@/modules/components/inputs/PasswordFormInput.vue';
+import FormInput from '@/modules/common/components/inputs/FormInput.vue';
+import StyledButton from '@/modules/common/components/StyledButton.vue';
+import PasswordFormInput from '@/modules/common/components/inputs/PasswordFormInput.vue';
 
 export default defineComponent({
   name: 'RegistrationForm',

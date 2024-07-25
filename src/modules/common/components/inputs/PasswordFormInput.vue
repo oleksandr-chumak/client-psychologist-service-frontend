@@ -1,6 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import FormInput from '@/modules/components/inputs/FormInput.vue';
+import FormInput from '@/modules/common/components/inputs/FormInput.vue';
 
 export default defineComponent({
   name: 'PasswordFormInput',

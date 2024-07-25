@@ -28,8 +28,8 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
-import StyledButton from '@/modules/components/StyledButton.vue';
-import NavigationLink from '@/modules/components/NavigationLink.vue';
+import StyledButton from '@/modules/common/components/StyledButton.vue';
+import NavigationLink from '@/modules/common/components/NavigationLink.vue';
 import LoginModal from '@/modules/auth/components/modals/LoginModal.vue';
 import RegistrationModal from '@/modules/auth/components/modals/RegistrationModal.vue';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LayoutHeader from '@/modules/layout/components/LayoutHeader.vue';
-import NavigationLink from '@/modules/components/NavigationLink.vue';
+import NavigationLink from '@/modules/common/components/NavigationLink.vue';
 import HeroImageUrl from '@/assets/hero-image.jpg';
 </script>
 

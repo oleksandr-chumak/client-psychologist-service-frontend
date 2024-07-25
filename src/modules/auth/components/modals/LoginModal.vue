@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TeleportModal from '@/modules/components/TeleportModal.vue';
+import TeleportModal from '@/modules/common/components/TeleportModal.vue';
 import LoginForm from '@/modules/auth/components/forms/LoginForm.vue';
 
 export default defineComponent({
