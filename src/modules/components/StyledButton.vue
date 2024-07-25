@@ -37,11 +37,11 @@ const handleClick = (event: MouseEvent) => {
 
 const buttonClass = computed(() => {
   return [
-    'py-3.5 px-10 text-base leading-5 font-medium rounded-full',
+    'tw-py-3.5 tw-px-10 tw-text-base tw-leading-5 tw-font-medium tw-rounded-full',
     {
-      'bg-main text-white': props.buttonStyle === 'filled',
-      'border border-[#C7CBCA] text-black bg-transparent py-[13px]': props.buttonStyle === 'outlined',
-      'opacity-50 cursor-not-allowed': props.loading
+      'tw-bg-main tw-text-white': props.buttonStyle === 'filled',
+      'tw-border tw-border-solid tw-border-[#C7CBCA] tw-text-black tw-bg-transparent tw-py-[13px]': props.buttonStyle === 'outlined',
+      'tw-opacity-50 tw-cursor-not-allowed': props.loading
     }
   ];
 });

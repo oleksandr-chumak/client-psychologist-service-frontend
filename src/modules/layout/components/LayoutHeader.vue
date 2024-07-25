@@ -1,12 +1,12 @@
 <template>
-  <div class="py-4 border-b">
-    <div class="flex justify-between w-full max-w-6xl mx-auto px-4">
-      <div class="flex items-center gap-4">
-        <span class="font-bold text-xl mr-20"><span class="text-main">psychologists.</span>services</span>
+  <div class="tw-py-4 tw-border-b">
+    <div class="tw-flex tw-justify-between tw-w-full tw-max-w-6xl tw-mx-auto px-4">
+      <div class="tw-flex tw-items-center tw-gap-4">
+        <span class="tw-font-bold tw-text-xl tw-mr-20"><span class="tw-text-main">psychologists.</span>services</span>
         <navigation-link to="/">Home</navigation-link>
         <navigation-link to="/">Psychologist</navigation-link>
       </div>
-      <div class="flex gap-4">
+      <div class="tw-flex tw-gap-4">
         <styled-button
           button-style="outlined"
           @click="openLoginModal"

@@ -5,14 +5,14 @@ import HeroImageUrl from '@/assets/hero-image.jpg';
 </script>
 
 <template>
-  <div class="bg-[#F7F9F8]">
+  <div class="tw-bg-[#F7F9F8]">
     <layout-header></layout-header>
-    <div class="flex gap-24 w-full max-w-6xl mx-auto min-h-[calc(100vh-81px)] h-full px-4 py-20">
+    <div class="tw-flex tw-gap-24 tw-w-full tw-max-w-6xl tw-mx-auto tw-min-h-[calc(100vh-81px)] tw-h-full tw-px-4 tw-py-20">
       <div>
-        <h1 class="font-semibold text-[80px] leading-[82px] mb-8">
-          The road to the <span class="text-main">depths</span> of the human soul
+        <h1 class="tw-font-semibold tw-text-[80px] tw-leading-[82px] tw-mb-8">
+          The road to the <span class="tw-text-main">depths</span> of the human soul
         </h1>
-        <p class="font-medium text-lg leading-6 mb-10">
+        <p class="tw-font-medium tw-text-lg tw-leading-6 tw-mb-10">
           We help you to reveal your potential, overcome challenges and find a guide in your own life with the help of our
           experienced psychologists.
         </p>
@@ -20,49 +20,49 @@ import HeroImageUrl from '@/assets/hero-image.jpg';
           link-style="button"
           to=""
         >
-          <div class="flex gap-2 items-center">
+          <div class="tw-flex tw-gap-2 tw-items-center">
             Get Started
             <v-icon
-              class="leading-5"
+              class="tw-leading-5"
               size="20"
               icon="mdi-arrow-top-right"
             />
           </div>
         </navigation-link>
       </div>
-      <div class="relative min-w-[39%] h-full">
+      <div class="tw-relative tw-min-w-[39%] tw-h-full">
         <img
-          class="rounded-lg"
+          class="tw-rounded-lg"
           :src="HeroImageUrl"
           alt="hero image"
         >
         <div
-          class="flex items-center justify-center absolute bottom-1/2 -left-8 -rotate-12 rounded-lg -translate-y-1/2 h-10 w-10 bg-[#4535AF]"
+          class="tw-flex tw-items-center tw-justify-center tw-absolute tw-bottom-1/2 tw--left-8 tw--rotate-12 tw-rounded-lg tw--translate-y-1/2 tw-h-10 tw-w-10 tw-bg-[#4535AF]"
         >
           <v-icon
-            class="text-white rotate-12"
+            class="tw-text-white tw-rotate-12"
             size="22"
             icon="mdi-help"
           />
         </div>
         <div
-          class="flex items-center justify-center absolute top-[10%] -right-8 rotate-12 rounded-lg h-10 w-10 bg-[#FBC75E]"
+          class="tw-flex tw-items-center tw-justify-center tw-absolute tw-top-[10%] tw--right-8 tw-rotate-12 tw-rounded-lg tw-h-10 tw-w-10 tw-bg-[#FBC75E]"
         >
           <v-icon
-            class="text-white"
+            class="tw-text-white"
             size="22"
             icon="mdi-account-group"
           />
         </div>
-        <div class="absolute flex gap-4 bottom-[10%] left-[-100px] p-8 rounded-2xl bg-main text-white">
+        <div class="tw-absolute tw-flex tw-gap-4 tw-bottom-[10%] tw-left-[-100px] tw-p-8 tw-rounded-2xl tw-bg-main tw-text-white">
           <v-icon
-            class="bg-[white] p-[27px] rounded-2xl w-7 h-7 text-main"
+            class="tw-bg-[white] tw-p-[27px] tw-rounded-2xl tw-w-7 tw-h-7 tw-text-main"
             size="28"
             icon="mdi-check"
           />
-          <div class="flex flex-col">
-            <span class="text-[#FBFBFB]/50 text-sm mb-1.5">Experienced psychologists</span>
-            <span class="font-bold text-2xl leading-7">15,000</span>
+          <div class="tw-flex tw-flex-col">
+            <span class="tw-text-[#FBFBFB]/50 tw-text-sm tw-mb-1.5">Experienced psychologists</span>
+            <span class="tw-font-bold tw-text-2xl tw-leading-7">15,000</span>
           </div>
         </div>
       </div>

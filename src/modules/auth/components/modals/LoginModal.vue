@@ -1,9 +1,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TeleportModal from '@/modules/components/TeleportModal.vue';
+import LoginForm from '@/modules/auth/components/forms/LoginForm.vue';
 
 export default defineComponent({
-  components: { TeleportModal },
+  components: { LoginForm, TeleportModal },
   emits: ['close'],
   props: {
     open: {
@@ -28,6 +29,6 @@ export default defineComponent({
     @close="handleClose"
     :open="props.open"
   >
-    login modal
+    <login-form></login-form>
   </teleport-modal>
 </template>

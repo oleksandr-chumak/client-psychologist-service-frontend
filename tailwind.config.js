@@ -4,11 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
+  prefix: "tw-",
   theme: {
-    colors: {
-      main: "#54BE96"
-    },
     extend: {
+      colors: {
+        main: "#54BE96"
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },

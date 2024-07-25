@@ -20,8 +20,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const handleModalClose = () => emit('close');
 
-    const computedModalOverlayClass = computed(() => ['fixed top-0 left-0 w-screen h-screen bg-[#00000066]', { [props.modalOverlayClass]: !!props.modalOverlayClass }]);
-    const computedModalContentClass = computed(() => ['fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[white] p-16 rounded-3xl max-w-[566px] w-3/6', { [props.modalContentClass]: !!props.modalContentClass }]);
+    const computedModalOverlayClass = computed(() => ['tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen tw-bg-[#00000066]', { [props.modalOverlayClass]: !!props.modalOverlayClass }]);
+    const computedModalContentClass = computed(() => ['tw-fixed tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-bg-[white] tw-p-16 tw-rounded-3xl tw-max-w-[566px] tw-w-3/6', { [props.modalContentClass]: !!props.modalContentClass }]);
 
     return {
       handleModalClose,
@@ -41,10 +41,10 @@ export default defineComponent({
         @click="handleModalClose"
       />
       <div :class="computedModalContentClass">
-        <div class="relative">
+        <div class="tw-relative">
           <button
             @click="handleModalClose"
-            class="absolute top-0 right-0 -translate-y-12 translate-x-12"
+            class="tw-absolute tw-top-0 tw-right-0 tw--translate-y-12 tw-translate-x-12"
           >
             <v-icon
               icon="mdi-window-close"

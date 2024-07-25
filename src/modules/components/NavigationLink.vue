@@ -14,9 +14,9 @@ const props = withDefaults(defineProps<{
 const linkClass = computed(() => {
   return [
     {
-      'text-[#191A15] font-normal leading-5': props.linkStyle === 'text',
-      'block w-fit py-3.5 px-10 text-base leading-5 font-medium rounded-full bg-main text-white': props.linkStyle === 'button',
-      "relative after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-2 after:h-2 after:rounded-full after:bg-main" : props.linkStyle === "text" && props.active
+      'tw-text-[#191A15] tw-font-normal tw-leading-5': props.linkStyle === 'text',
+      'tw-block tw-w-fit tw-py-3.5 tw-px-10 tw-text-base tw-leading-5 tw-font-medium tw-rounded-full tw-bg-main tw-text-white': props.linkStyle === 'button',
+      "tw-relative tw-after:content-[''] tw-after:absolute tw-after:-bottom-3 tw-after:left-1/2 tw-after:-translate-x-1/2 tw-after:w-2 tw-after:h-2 tw-after:rounded-full tw-after:bg-main" : props.linkStyle === "text" && props.active
     }
   ];
 });
