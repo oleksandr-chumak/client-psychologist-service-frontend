@@ -6,6 +6,7 @@ import FormInput from '@/modules/common/components/inputs/FormInput.vue';
 import StyledButton from '@/modules/common/components/StyledButton.vue';
 import PasswordFormInput from '@/modules/common/components/inputs/PasswordFormInput.vue';
 import { AxiosError } from 'axios';
+import { ref } from 'vue';
 import { useToast } from 'vue-toastification';
 import AuthService from '@/modules/auth/services/auth.service';
 import { TokenService } from '@/modules/common/services/token.service';
@@ -13,6 +14,7 @@ import { useUserStore } from '@/modules/auth/stores/user.store';
 
 
 const emit = defineEmits(['onSuccessSubmit']);
+const loading = ref(false);
 
 const schema = z.object({
   email: z.string().email('Email must be email').min(1, 'Email is required'),
@@ -28,6 +30,7 @@ const { handleSubmit } = useForm<Schema>({
 });
 
 const onSubmit = handleSubmit(async (values) => {
+  loading.value = true;
   try {
     const res = await AuthService.login(values);
     TokenService.saveToken(res.accessToken);
@@ -40,6 +43,8 @@ const onSubmit = handleSubmit(async (values) => {
     toast.error(errorMessage, {
       timeout: 2000
     });
+  } finally {
+    loading.value = false;
   }
 });
 
@@ -59,6 +64,7 @@ const onSubmit = handleSubmit(async (values) => {
       input-wrapper-class="mb-4"
     ></password-form-input>
     <styled-button
+      :loading="loading"
       class="tw-w-full"
       type="submit"
     >Log In

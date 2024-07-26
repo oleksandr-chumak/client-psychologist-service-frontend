@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FormInput from '@/modules/common/components/inputs/FormInput.vue';
 import * as z from 'zod';
+import { ref } from 'vue';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useForm } from 'vee-validate';
 import PasswordFormInput from '@/modules/common/components/inputs/PasswordFormInput.vue';
@@ -23,9 +24,11 @@ const { handleSubmit } = useForm<Schema>({
   validationSchema
 });
 
+const loading = ref(false);
 const emit = defineEmits(['onSuccessSubmit']);
 
 const onSubmit = handleSubmit(async (values) => {
+  loading.value = true;
   try {
     await AuthService.register(values);
     toast.success('Registration success');
@@ -36,6 +39,8 @@ const onSubmit = handleSubmit(async (values) => {
     toast.error(errorMessage, {
       timeout: 2000
     });
+  } finally {
+    loading.value = false;
   }
 });
 
@@ -66,6 +71,7 @@ const onSubmit = handleSubmit(async (values) => {
       input-wrapper-class="mb-4"
     ></password-form-input>
     <styled-button
+      :loading="loading"
       type="submit"
       class="tw-w-full"
     >Sign Up
