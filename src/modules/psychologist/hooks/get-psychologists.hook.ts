@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { computed, onMounted, ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import type { PaginationResponse, WebApiParams } from '@/modules/common/types/web-api.type';
 import type { Psychologist } from '@/modules/psychologist/types/psychologist.type';
 import PsychologistService from '@/modules/psychologist/services/psychologist.service';
@@ -15,7 +15,7 @@ export const useGetPsychologist = (params?: Ref<WebApiParams>) => {
     psychologists.value.data.length === 0
   ));
 
-  const fetchPsychologists = async () => {
+  const fetchPsychologists = async (params?: Ref<WebApiParams>) => {
     isLoading.value = true;
     isError.value = false;
 
@@ -29,14 +29,8 @@ export const useGetPsychologist = (params?: Ref<WebApiParams>) => {
     }
   };
 
-  onMounted(() => {
-    fetchPsychologists();
-  });
-
   watchEffect(() => {
-    if (params) {
-      fetchPsychologists();
-    }
+    fetchPsychologists(params);
   });
 
   return {
