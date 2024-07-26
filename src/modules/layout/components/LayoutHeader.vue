@@ -5,8 +5,10 @@ import NavigationLink from '@/modules/common/components/NavigationLink.vue';
 import LoginModal from '@/modules/auth/components/modals/LoginModal.vue';
 import RegistrationModal from '@/modules/auth/components/modals/RegistrationModal.vue';
 import { useUserStore } from '@/modules/auth/stores/user.store';
+import { useRoute } from 'vue-router';
 
 const userStore = useUserStore();
+const route = useRoute();
 const isLoginModalOpen = ref(false);
 const isRegistrationModalOpen = ref(false);
 
@@ -22,8 +24,16 @@ const closeRegistrationModal = () => isRegistrationModalOpen.value = false;
     <div class="tw-flex tw-justify-between tw-w-full tw-max-w-6xl tw-mx-auto px-4">
       <div class="tw-flex tw-items-center tw-gap-4">
         <span class="tw-font-bold tw-text-xl tw-mr-20"><span class="tw-text-main">psychologists.</span>services</span>
-        <navigation-link to="/">Home</navigation-link>
-        <navigation-link to="/">Psychologist</navigation-link>
+        <navigation-link
+          to="/"
+          :active="route.fullPath === '/'"
+        >Home
+        </navigation-link>
+        <navigation-link
+          to="/psychologists"
+          :active="route.fullPath === '/psychologists'"
+        >Psychologist
+        </navigation-link>
       </div>
       <div
         class="tw-flex tw-gap-4"
