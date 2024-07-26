@@ -37,13 +37,27 @@ const closeRegistrationModal = () => isRegistrationModalOpen.value = false;
         </styled-button>
         <styled-button @click="openRegistrationModal">Register</styled-button>
       </div>
-      <styled-button
-        button-style="outlined"
-        @click="userStore.logout"
+      <div
+        class="tw-flex tw-items-center tw-gap-4"
         v-if="userStore.user"
       >
-        Log out
-      </styled-button>
+        <div class="tw-flex tw-items-center tw-gap-2">
+          <div class="tw-flex tw-items-center tw-justify-center tw-size-10 tw-bg-main tw-rounded-lg">
+            <v-icon
+              class="tw-text-white"
+              icon="mdi-account"
+            ></v-icon>
+          </div>
+          <span>{{ userStore.user.fullName }}</span>
+        </div>
+        <styled-button
+          button-style="outlined"
+          @click="userStore.logout"
+        >
+          Log out
+        </styled-button>
+      </div>
+
     </div>
   </div>
   <login-modal
