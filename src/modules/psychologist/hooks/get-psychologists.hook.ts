@@ -1,9 +1,10 @@
+import type { Ref } from 'vue';
 import { computed, onMounted, ref, watchEffect } from 'vue';
 import type { PaginationResponse, WebApiParams } from '@/modules/common/types/web-api.type';
 import type { Psychologist } from '@/modules/psychologist/types/psychologist.type';
 import PsychologistService from '@/modules/psychologist/services/psychologist.service';
 
-export const useGetPsychologist = (params?: WebApiParams) => {
+export const useGetPsychologist = (params?: Ref<WebApiParams>) => {
   const isLoading = ref(false);
   const isError = ref(false);
   const psychologists = ref<PaginationResponse<Psychologist> | null>(null);
@@ -19,7 +20,7 @@ export const useGetPsychologist = (params?: WebApiParams) => {
     isError.value = false;
 
     try {
-      psychologists.value = await PsychologistService.getPsychologists(params);
+      psychologists.value = await PsychologistService.getPsychologists(params?.value);
     } catch (error) {
       isError.value = true;
       console.error('Failed to fetch psychologists:', error);
