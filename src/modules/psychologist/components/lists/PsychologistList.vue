@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import type { Psychologist } from '@/modules/psychologist/types/psychologist.type';
-import PsychologistCard from '@/modules/psychologist/components/PsychologistCard.vue';
+import PsychologistCard from '@/modules/psychologist/components/lists-items/PsychologistCard.vue';
 
 defineProps<{
   psychologists: Psychologist[],

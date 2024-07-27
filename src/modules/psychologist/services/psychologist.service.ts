@@ -12,6 +12,14 @@ class PsychologistService extends WebApiService {
 
     return res.data;
   }
+
+  async getPsychologistById(id: number): Promise<Psychologist> {
+    const res = await this.get<Psychologist>({
+      url: `psychologists/${id}`
+    });
+
+    return res.data;
+  }
 }
 
 export default new PsychologistService();

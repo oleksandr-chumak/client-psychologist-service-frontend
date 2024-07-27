@@ -7,7 +7,7 @@
   >
     <slot v-if="!props.loading"></slot>
     <v-progress-circular
-      :size="18"
+      :size="props.size === 'medium' ? 18 : 14"
       v-if="props.loading"
       indeterminate
     ></v-progress-circular>
@@ -22,7 +22,9 @@ const props = withDefaults(
     loading?: boolean,
     disabled?: boolean,
     buttonStyle?: 'outlined' | 'filled',
+    size?: 'small' | 'medium'
     type?: 'button' | 'submit'
+    rounded?: boolean
     class?: string
   }>(),
   {
@@ -30,7 +32,9 @@ const props = withDefaults(
     disabled: false,
     buttonStyle: 'filled',
     type: 'button',
-    class: ''
+    class: '',
+    rounded: true,
+    size: 'medium'
   }
 );
 
@@ -41,11 +45,15 @@ const handleClick = (event: MouseEvent) => {
 };
 
 const buttonClass = computed(() => [
-  'tw-py-3.5 tw-px-10 tw-text-base tw-leading-5 tw-font-medium tw-rounded-full',
+  'tw-font-medium',
   {
     'tw-bg-main tw-text-white': props.buttonStyle === 'filled',
-    'tw-border tw-border-solid tw-border-[#C7CBCA] tw-text-black tw-bg-transparent tw-py-[13px]': props.buttonStyle === 'outlined',
-    'tw-opacity-50 tw-cursor-not-allowed': props.loading,
+    'tw-border tw-border-solid tw-border-[#C7CBCA] tw-text-black tw-bg-transparent': props.buttonStyle === 'outlined',
+    'tw-opacity-50 tw-cursor-not-allowed': props.loading || props.disabled,
+    [`${props.buttonStyle === 'outlined' ? 'tw-py-[13px]' : 'tw-py-3.5'} tw-px-10 tw-text-base tw-leading-5`]: props.size === 'medium',
+    [`${props.buttonStyle === 'outlined' ? 'tw-py-[9px]' : 'tw-py-2.5'} tw-px-4 tw-text-xs tw-leading-4`]: props.size === 'small',
+    'tw-rounded-lg': !props.rounded,
+    'tw-rounded-full': props.rounded,
     [props.class]: props.class
   }
 ]);

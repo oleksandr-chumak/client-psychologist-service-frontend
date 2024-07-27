@@ -1,19 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import PsychologistsView from '@/views/PsychologistsView.vue';
+
+const HomeView = () => import('@/views/HomeView.vue');
+const PsychologistsView = () => import('@/views/PsychologistsView.vue');
+const PsychologistView = () => import('@/views/PsychologistView.vue');
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
       component: HomeView
     },
     {
       path: '/psychologists',
-      name: 'psychologists',
       component: PsychologistsView
+    },
+    {
+      path: '/psychologist/:id',
+      component: PsychologistView
     }
   ]
 });
