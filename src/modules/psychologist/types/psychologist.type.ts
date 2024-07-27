@@ -3,6 +3,7 @@ export interface Psychologist {
   firstName: string;
   lastName: string;
   fullName: string;
+  rating: number | null;
   email: string;
   experienceAmount: number;
   experienceUnit: string;

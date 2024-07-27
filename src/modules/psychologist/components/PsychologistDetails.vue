@@ -29,7 +29,7 @@ defineProps<{ psychologist: Psychologist }>();
               icon="mdi-star"
             ></v-icon>
             <span class="tw-font-medium tw-text-base">
-              Rating: 4.8
+              Rating: {{ psychologist.rating ? psychologist.rating.toFixed(1) : '0.0' }}
             </span>
           </div>
           <div class="tw-w-[1px] tw-h-[70%] tw-bg-[#CDCECD]" />
