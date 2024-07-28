@@ -23,7 +23,6 @@ export const useGetPsychologistAppointments = (psychologistId: number, params?: 
   };
 
   watchEffect(() => {
-    console.log('params changed')
     fetchPsychologistAppointments(psychologistId, params?.value);
   });
 
