@@ -3,7 +3,7 @@
 import TeleportModal from '@/modules/common/components/TeleportModal.vue';
 import type { Psychologist } from '@/modules/psychologist/types/psychologist.type';
 import MockPsychologistImage from '@/assets/mock-psychologist-image.jpg';
-import DatePicker from '@/modules/common/components/inputs/DatePicker.vue';
+import CreateAppointmentForm from '@/modules/psychologist/components/forms/appointment-form/CreateAppointmentForm.vue';
 
 const props = withDefaults(defineProps<{ open?: boolean, psychologist: Psychologist }>(), { open: false });
 const emit = defineEmits(['close']);
@@ -37,14 +37,10 @@ const emit = defineEmits(['close']);
         <span class="tw-text-base tw-font-medium">Dr. {{ psychologist.fullName }}</span>
       </div>
     </div>
-    <date-picker
-      :unavailable-times="[
-        [new Date(new Date().setHours(9, 0, 0, 0)), new Date(new Date().setHours(9, 30, 0, 0))],
-        [new Date(new Date().setHours(15, 0, 0, 0)), new Date(new Date().setHours(16, 0, 0, 0))]
-      ]"
-      :available-hours="[8, 17]"
-      :loading="false"
-    ></date-picker>
+    <create-appointment-form
+      :psychologist-id="psychologist.id"
+      @success-create="emit('close')"
+    ></create-appointment-form>
   </teleport-modal>
 </template>
 

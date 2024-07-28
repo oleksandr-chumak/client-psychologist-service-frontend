@@ -6,9 +6,13 @@ export interface PaginationResponse<Data> {
   totalCount: number;
 }
 
+export interface SearchParams {
+  filter: string
+}
+
 export interface PaginationParams {
   page: number;
   size: number;
 }
 
-export type WebApiParams = Partial<PaginationParams>;
+export type WebApiParams = Partial<PaginationParams> & Partial<SearchParams>

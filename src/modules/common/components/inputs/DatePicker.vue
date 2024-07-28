@@ -116,6 +116,7 @@ const daysOfCurrentWeek = computed(() => {
           'tw-cursor-not-allowed': isThisWeek(currentWeek)
         }]"
         @click="handlePreviousWeekClick"
+        type="button"
       >
         <v-icon
           :class="[{
@@ -156,6 +157,7 @@ const daysOfCurrentWeek = computed(() => {
       <button
         class="tw-border tw-border-solid tw-border-[#C9CED8] tw-p-1.5 tw-rounded-lg"
         @click="handleNextWeekClick"
+        type="button"
       >
         <v-icon
           class="tw-text-main"
@@ -187,6 +189,7 @@ const daysOfCurrentWeek = computed(() => {
           v-for="time in availableTimes"
           :key="time[0].getMilliseconds()"
           @click="handleTimeChange(time)"
+          type="button"
         >
           {{ format(time[0], 'HH:mm aa') }}
         </button>
