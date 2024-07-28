@@ -18,7 +18,7 @@ import HeroImageUrl from '@/assets/hero-image.jpg';
         </p>
         <navigation-link
           link-style="button"
-          to=""
+          to="/psychologists"
         >
           <div class="tw-flex tw-gap-2 tw-items-center">
             Get Started
