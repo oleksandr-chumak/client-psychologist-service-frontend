@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
 import { useGetPsychologistById } from '@/modules/psychologist/hooks/api/psychologists/get-psychologist-by-id.hook';
 import PsychologistDetails from '@/modules/psychologist/components/PsychologistDetails.vue';
 import DefaultLayout from '@/modules/layout/components/DefaultLayout.vue';
@@ -9,18 +10,22 @@ import { useUserStore } from '@/modules/auth/stores/user.store';
 import CreateFeedbackForm from '@/modules/psychologist/components/forms/comment-form/CreateFeedbackForm.vue';
 import FeedbacksList from '@/modules/psychologist/components/lists/FeedbacksList.vue';
 import { usePsychologistsFeedbacksStore } from '@/modules/psychologist/store/psychologist-feedbacks.store';
+import CreateAppointmentModal
+  from '@/modules/psychologist/components/modals/appointment-modal/CreateAppointmentModal.vue';
+import { useModal } from '@/modules/common/hooks/modal.hook';
 
 const userStore = useUserStore();
 const store = usePsychologistsFeedbacksStore();
 const route = useRoute();
 const router = useRouter();
+
 const id = Number(route.params.id);
 const { psychologist, isLoading, isError } = useGetPsychologistById(id);
+const { open, handleModalOpen, handleModalClose } = useModal();
 
 const handleSuccessFeedbackCreate = () => {
   store.refetchData();
 };
-
 
 onBeforeMount(() => {
   if (Number.isNaN(id)) {
@@ -51,7 +56,10 @@ watchEffect(() => {
       <psychologist-details :psychologist="psychologist"></psychologist-details>
       <div class="tw-ml-[142px] tw-mt-4">
         <div class="tw-mb-4">
-          <styled-button :disabled="!userStore.user">
+          <styled-button
+            @click="handleModalOpen"
+            :disabled="!userStore.user"
+          >
             {{ userStore.user ? 'Make an appointment' : 'Authorize to make an appointment' }}
           </styled-button>
         </div>
@@ -70,9 +78,14 @@ watchEffect(() => {
           :psychologist-id="psychologist.id"
         ></feedbacks-list>
       </div>
+      <create-appointment-modal
+        :open="open"
+        :psychologist="psychologist"
+        @close="handleModalClose"
+      ></create-appointment-modal>
     </div>
   </default-layout>
-</template>a
+</template>
 
 <style scoped>
 
